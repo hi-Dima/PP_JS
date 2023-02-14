@@ -12,19 +12,18 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class RestApiController {
+public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
 
     @Autowired
-    public RestApiController(RoleService roleService, UserService userService) {
+    public AdminController(RoleService roleService, UserService userService) {
         this.roleService = roleService;
         this.userService = userService;
     }
@@ -55,12 +54,6 @@ public class RestApiController {
     @GetMapping("users/{id}")
     public ResponseEntity<User> getUser (@PathVariable("id") int id) {
         User user = userService.getUserInfo(id);
-        return new ResponseEntity<>(user,HttpStatus.OK);
-    }
-
-    @GetMapping("/user")
-    public ResponseEntity<User> getUserByUsername (Principal principal) {
-        User user = userService.findUserByUsername(principal.getName());
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
