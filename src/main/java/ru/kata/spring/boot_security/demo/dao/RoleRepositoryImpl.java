@@ -23,7 +23,6 @@ public  class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public Set<Role> getAllRoles() {
-
         return entityManager.createQuery("select p from Role p", Role.class).getResultStream().collect(Collectors.toSet());
     }
     @Override
@@ -34,7 +33,6 @@ public  class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public Set<Role> getRolesByUserId(Integer id) {
-
         return userRepository.findById(id).get().getRoles();
     }
 

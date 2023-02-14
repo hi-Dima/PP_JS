@@ -16,11 +16,13 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Set<Role> getRolesByRoleName(String role) {
         String newRole = new String();
-
+        if (role.contains("ROLE_USER") && role.contains("ROLE_ADMIN")) {
+            return roleRepository.getAllRoles();
+        }
         if (role.contains("ROLE_USER")) {
-            newRole = "ROLE_USER";
-            return roleRepository.getRolesByRoleName(newRole);
-        } else return getUserRoles();
+                newRole = "ROLE_USER";
+                return roleRepository.getRolesByRoleName(newRole);
+            } else return roleRepository.getRolesByRoleName("ROLE_ADMIN");
     }
     @Override
     public Set<Role> getRolesByUserId(Integer Id) {

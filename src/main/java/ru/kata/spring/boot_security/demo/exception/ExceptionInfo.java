@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.Exception;
+package ru.kata.spring.boot_security.demo.exception;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

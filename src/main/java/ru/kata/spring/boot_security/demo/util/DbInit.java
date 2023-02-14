@@ -26,7 +26,6 @@ public class DbInit {
         Set<Role> adminRole= new HashSet<>();
         Role roleUser = new Role("ROLE_USER");
         Role roleAdmin = new Role ("ROLE_ADMIN");
-        adminRole.add(roleUser);
         adminRole.add(roleAdmin);
         roleService.saveRole(roleAdmin);
         roleService.saveRole(roleUser);
